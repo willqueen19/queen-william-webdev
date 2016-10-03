@@ -54,3 +54,21 @@ body {
 .list-items {
     vertical-align: center;
 }
+
+img {
+}
+
+.resize {
+    width: 100%;
+}
+
+.content-position {
+    z-index: 0;
+    position: relative;
+}
+
+.widget-position {
+    z-index: 1;
+    position: absolute;
+
+}
