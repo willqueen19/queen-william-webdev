@@ -2,11 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Widget - Image</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <p class="navbar-text pull-left">
+            <a href="widget-list.html" class="glyphicon glyphicon-chevron-left"></a>
+        </p>
+        <p class="navbar-text pull-right">
+            <a href="widget-choose.html" class="glyphicon glyphicon-ok"></a>
+        </p>
+        <div class="navbar-header">
+            <a class="navbar-brand profile-websites-navbar-text" href="#">
+                <p class="header-text">Edit Widget</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1></h1>
+    <form>
+        <div class="form-group">
+            <label for="username">Name</label>
+            <input type="text" class="form-control" id="username" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="first-name">Text</label>
+            <input type="text" class="form-control" id="first-name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="file">Upload</label>
+            <input type="file" class="form-control" id="file" placeholder="">
+        </div>
+    </form>
+
+    <a class="btn btn-primary btn-block"
+       href="widget-list.html">Upload Image</a>
+    <a class="btn btn-danger  btn-block"
+       href="widget-list.html">Delete</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="navbar-header pull-right">
+                <a class="navbar-brand" href="../user/profile.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+</nav>
 
 </body>
 </html>
