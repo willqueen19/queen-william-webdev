@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid row">
         <div class="col-xs-4 hidden-xs">
             <p class="navbar-text pull-left">
-                <a href="../website/website-list.html" class="glyphicon glyphicon-chevron-left"></a>
+                <a href="website-list.html.html" class="glyphicon glyphicon-chevron-left"></a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="page-new.html" class="glyphicon glyphicon-plus"></a>
+                <a href="website-list.html.html" class="glyphicon glyphicon-plus"></a>
             </p>
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
@@ -26,17 +16,16 @@
         <div class="col-xs-12 col-sm-8">
             <div class hidden-xs-up>
                 <p class="navbar-text hidden-xs-up pull-left">
-                    <a href="page-list.html" class="glyphicon glyphicon-chevron-left"></a>
+                    <a href="page-list.view.client.html" class="glyphicon glyphicon-chevron-left"></a>
                 </p>
             </div>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="glyphicon glyphicon-ok"></a>
-            </p>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <p class="header-text">Edit Page</p>
-                </a>
-            </div>
+                <a href="page-list.view.client.html" class="glyphicon glyphicon-ok"></a>
+            </p><div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <p class="header-text">New Page</p>
+            </a>
+        </div>
         </div>
     </div>
 </nav>
@@ -47,33 +36,33 @@
         <ul class="list-group">
             <li class="list-group-item borderless">
                 <div>
-                    <a class="vertical-center" href="../widget/widget-list.html">Page 1</a>
+                    <a class="vertical-center" href="../views/widget/widget-list.view.client.html">Page 1</a>
                     <p class="pull-right">
-                        <a href="page-edit.html" class="glyphicon glyphicon-cog"></a>
+                        <a href="page-edit.view.client.html" class="glyphicon glyphicon-cog"></a>
                     </p>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div>
-                    <a class="vertical-center" href="../widget/widget-list.html">Page 2</a>
+                    <a class="vertical-center" href="../views/widget/widget-list.view.client.html">Page 2</a>
                     <p class="pull-right">
-                        <a href="page-edit.html" class="glyphicon glyphicon-cog"></a>
+                        <a href="page-edit.view.client.html" class="glyphicon glyphicon-cog"></a>
                     </p>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div>
-                    <a class="vertical-center" href="../widget/widget-list.html">Page 3</a>
+                    <a class="vertical-center" href="../views/widget/widget-list.view.client.html">Page 3</a>
                     <p class="pull-right">
-                        <a href="page-edit.html" class="glyphicon glyphicon-cog"></a>
+                        <a href="page-edit.view.client.html" class="glyphicon glyphicon-cog"></a>
                     </p>
                 </div>
             </li>
             <li class="list-group-item borderless">
                 <div>
-                    <a class="vertical-center" href="../widget/widget-list.html">Page 4</a>
+                    <a class="vertical-center" href="../views/widget/widget-list.view.client.html">Page 4</a>
                     <p class="pull-right">
-                        <a href="page-edit.html" class="glyphicon glyphicon-cog"></a>
+                        <a href="page-edit.view.client.html" class="glyphicon glyphicon-cog"></a>
                     </p>
                 </div>
             </li>
@@ -83,15 +72,13 @@
     <div class="col-xs-12 col-sm-8">
         <h1></h1>
         <div class="form-group">
-            <label for="first-name">Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+            <label for="first-name">Page Name</label>
+            <input ng-model="model.page.name" type="text" class="form-control" id="first-name" placeholder="Alice">
         </div>
         <div class="form-group">
-            <label for="last-name">Title</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Page Title">
+            <label for="last-name">Page Title</label>
+            <input ng-model="model.page.description" type="text" class="form-control" id="last-name" placeholder="Page Title">
         </div>
-        <a class="btn btn-danger  btn-block"
-           href="login.html">Delete</a>
     </div>
 </div>
 
@@ -99,14 +86,11 @@
     <div class="container-fluid row">
         <div class="col-xs-12 col-sm-12">
             <div class="navbar-header pull-right">
-                <a class="navbar-brand" href="../user/profile.html">
+                <a class="navbar-brand" href="../views/user/profile.view.client.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </div>
+    </div>
 </nav>
 
-
-
-</body>
-</html>
