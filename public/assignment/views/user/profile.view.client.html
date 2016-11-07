@@ -2,7 +2,10 @@
 <nav class="navbar navbar-default navbar-fixed-top templates-websites-navbar">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="#" class="glyphicon glyphicon-ok"></a>
+            <a ng-click="model.updateUser()" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+            </a>
         </p>
         <div class="navbar-header">
             <a class="navbar-brand profile-websites-navbar-text" href="#">
@@ -13,12 +16,12 @@
 </nav>
 
 <div class="container">
-    <h1>Profile</h1>
+    <h1></h1>
 
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username">
+            <input ng-model="username" type="text" class="form-control" id="username" placeholder="Username">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
@@ -33,7 +36,7 @@
             <input ng-model="model.user.last" type="text" class="form-control" id="last-name" placeholder="Wonderland">
         </div>
     </form>
-
+    {{model.user._id}}
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.user._id}}/website">Websites</a>
     <a class="btn btn-danger btn-block"

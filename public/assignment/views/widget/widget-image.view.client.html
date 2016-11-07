@@ -37,6 +37,12 @@
         <div class="form-group">
             <label for="file">Upload</label>
             <input type="file" class="form-control" id="file" placeholder="">
+            <form action=" /api/upload" method="post" enctype="multipart/form-data">
+                <input name=" myFile" type="file" class="form-control"/>
+                <input name=" width" value="{{model.widget.width}}" style="display: none"/>
+                <input name=" widgetId" value="{{model.widget._id}}"   style="display: none"/>
+                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+            </form>
         </div>
     </form>
 

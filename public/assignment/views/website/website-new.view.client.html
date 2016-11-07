@@ -3,10 +3,10 @@
     <div class="container-fluid row">
         <div class="col-xs-4 hidden-xs">
             <p class="navbar-text pull-left">
-                <a href="website-list.html.html" class="glyphicon glyphicon-chevron-left"></a>
+                <a href="#/user/{{model.userId}}/website" class="glyphicon glyphicon-chevron-left"></a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="glyphicon glyphicon-plus"></a>
+                <a href="/user/{{model.userId}}/website" class="glyphicon glyphicon-check"></a>
             </p>
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
@@ -16,10 +16,10 @@
         </div>
         <div class="col-xs-12 col-sm-8">
             <p class="navbar-text pull-left">
-                <a href="website-list.view.client.html" class="glyphicon glyphicon-chevron-left"></a>
+                <a href="#/user/{{model.userId}}/website" class="glyphicon glyphicon-chevron-left"></a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="glyphicon glyphicon-ok"></a>
+                <a href="#/user/{{model.userId}}/website" class="glyphicon glyphicon-ok"></a>
             </p><div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <p class="header-text">New Website</p>
@@ -249,7 +249,7 @@
     <div class="container-fluid row">
         <div class="col-xs-12 col-sm-12">
             <div class="navbar-header pull-right">
-                <a class="navbar-brand" href="../views/user/profile.view.client.html">
+                <a class="navbar-brand" href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
