@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController)
         .controller("NewWidgetController", NewWidgetController)
-        .controller("EditWidgetController", EditWidgetController)
+        .controller("EditWidgetController", EditWidgetController);
 
     function WidgetListController($routeParams,
                                   WidgetService, $sce, $timeout) {
@@ -19,17 +19,11 @@
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
 
         function init() {
-            var promise = WidgetService.findWidgetsForPage(vm.pid);
+            var promise = WidgetService.findWidgetByPage(vm.pid);
             promise
                 .success(function(widgets){
                     vm.widgets = widgets;
                 })
-
-            // var widgets = $(".wam-widgets")
-            //     .sortable({
-            //         axis: 'y'
-            //     });
-            // console.log(widgets);
         }
 
         init();
@@ -62,6 +56,8 @@
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
         vm.wgid = $routeParams.wgid;
+        vm.updateWidget = updateWidget;
+        vm.deleteWidget = deleteWidget;
 
         function init() {
             vm.widget = WidgetService.findWidgetById(vm.wgid);
@@ -69,6 +65,36 @@
 
         init();
 
+        function updateWidget() {
+            if ((vm.widget.name != null) && (vm.widget.size != null) && (vm.widget.text != null)) {
+                WidgetService
+                    .updateWidget(vm.wgid, vm.widget)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+                            vm.success = "Widget successfully updated";
+                        },
+                        function (error) {
+                            vm.error = error.data;
+                        }
+                    );
+            }
+
+        }
+
+        function deleteWidget() {
+            WidgetService
+                .deleteWidget(vm.wgid)
+                .then(
+                    function (response) {
+                        $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+                        vm.success = "Widget successfully updated";
+                    },
+                    function (error) {
+                        vm.error = error.data;
+                    }
+                );
+        }
     }
 
 })();
