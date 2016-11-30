@@ -1,7 +1,7 @@
 /**
  * Created by willqueen on 11/6/16.
  */
-module.exports = function(app) {
+module.exports = function(app, model) {
 
     var pages =
         [

@@ -37,4 +37,4 @@ module.exports = function (app) {
           // folder where file is saved to
 
     }
-    ... }
+}

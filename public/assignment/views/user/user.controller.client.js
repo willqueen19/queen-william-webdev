@@ -14,15 +14,19 @@
             vm.login = login;
 
             function login(username, password) {
-
-                var user = UserService.findUserByCredentials(username, password);
-                var userId = parseInt(user._id);
-
-                if(user === null) {
-                    vm.error = "No such user";
-                } else {
-                    $location.url("/user/" + userId);
-                }
+                // var promise = UserService.findUserByCredentials(username, password);
+                var promise = UserService.login(username, password);
+                promise
+                    .success(function(user){
+                        if(user === '0') {
+                            vm.error = "No such user";
+                        } else {
+                            $location.url("/user/" + user._id);
+                        }
+                    })
+                    .error(function(bbbb){
+                        console.log(bbbb);
+                    });
             }
         }
 

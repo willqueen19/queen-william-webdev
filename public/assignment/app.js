@@ -3,7 +3,7 @@
  */
 (function (){ // IIFE
     angular
-        .module("WebAppMaker", ["ngRoute"]);
+        .module('WebAppMaker', ['ngRoute']);
 })();
 
 
