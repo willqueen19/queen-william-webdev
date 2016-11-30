@@ -55,6 +55,7 @@
 
             vm.updateUser = updateUser;
             vm.unregisterUser = unregisterUser;
+            vm.logout = logout;
 
             function init() {
                 UserService
@@ -76,12 +77,23 @@
 
             function unregisterUser() {
                 UserService
-                    .unregisterUser(vm.user._id)
+                    .unregisterUser(vm.userId)
                     .success(function(){
                         $location.url("/login");
                     })
                     .error(function(){
 
+                    });
+            }
+
+            function logout() {
+                UserService
+                    .logout()
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        
                     });
             }
         }

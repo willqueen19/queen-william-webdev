@@ -69,7 +69,7 @@
                 controllerAs: "model"
             })
             .otherwise({
-                redirectTo: "login"
+                redirectTo: "/login"
             })
     }
 

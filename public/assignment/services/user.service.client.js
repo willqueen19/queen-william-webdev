@@ -19,7 +19,9 @@
             "findUserByCredentials" : findUserByCredentials,
             "updateUser"            : updateUser,
             "deleteUser"            : deleteUser,
-            "login"                 : login
+            "login"                 : login,
+            "logout"                : logout,
+            "unregisterUser"        : unregisterUser
     };
         return api;
 
@@ -52,6 +54,13 @@
                 password: password
             };
             return $http.post("/api/login", user);
+        }
+        function logout() {
+            return $http.post("/api/logout");
+        }
+        function unregisterUser(uid) {
+            var url = "/api/user"+uid;
+            return $http.delete(url);
         }
 
     } })();

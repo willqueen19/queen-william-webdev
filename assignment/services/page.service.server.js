@@ -3,12 +3,12 @@
  */
 module.exports = function(app, model) {
 
-    var pages =
-        [
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ];
+    //var pages =
+    //    [
+    //        { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
+    //        { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
+    //        { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
+    //    ];
 
     app.post("/api/website/:wid/page", createPage);
     app.get("/api/website/:wid/page", findPageByWebsiteId);
@@ -17,52 +17,79 @@ module.exports = function(app, model) {
     app.delete("/api/page/:pid", deletePage);
 
     function createPage(req, res) {
+        var websiteId = req.params.websiteId;
         var page = req.body;
-        pages.push(page);
-        res.send(websites);
+        model
+            .pageModel
+            .createPage(websiteId, page)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
     }
 
     function findPageByWebsiteId(req, res) {
         var wid = req.params.websiteId;
-        var result = [];
-        for(var p in pages) {
-            if(pages[p].websiteId === wid) {
-                result.push(websites[p]);
-            }
-        }
-        res.json(result);
+        model
+            .pageModel
+            .findPageByWebsiteId(wid)
+            .then(
+                function(pages) {
+                    res.json(pages);
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            );
     }
 
     function findPageById(req, res) {
         var pid = req.params._id;
-        for(var p in pages) {
-            if(pages[p]._id === pid) {
-                res.send(pages[p]);
-                return;
-            }
-        }
-        res.send('0');
+        model
+            .pageModel
+            .findPageById(pid)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
     }
 
     function updatePage(req, res) {
         var page = req.body;
         var pid = req.params._id;
-        for(var p in pages) {
-            if(pages[p]._id === pid) {
-                pages[p] = page;
-            }
-        }
-        res.send(200)
-
+        model
+            .pageModel
+            .updatePage(pid, page)
+            .then(
+                function (page) {
+                    res.send(200);
+                },
+                function(error) {
+                    res.status(404).send(error);
+                }
+            )
     }
 
     function deletePage(req, res) {
         var pid = req.params._id;
-        for(var p in pages) {
-            if(pages[p]._id === pid) {
-                pages.slice(p, 1);
-            }
-        }
-        res.send(200);
+        model
+            .pageModel
+            .deletePage(pid)
+            .then(
+                function(status) {
+                    res.send(200);
+                },
+                function(error) {
+                    res.status(404).send("Unable to remove page with ID: " + pid);
+                }
+            );
     }
 }

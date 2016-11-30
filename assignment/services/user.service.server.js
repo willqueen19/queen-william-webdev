@@ -17,63 +17,108 @@ module.exports = function(app) {
     app.delete('/api/user/:uid', deleteUser);
 
     function deleteUser(req, res) {
-        var uid = req.params._id;
-        for(var u in users) {
-            if(users[u]._id == uid) {
-                users.splice(u, 1);
-            }
-        }
-        res.send(200);
+        var uid = req.params.uid;
+        model
+            .userModel
+            .deleteUser(uid)
+            .then(
+                function (status) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            )
+
     }
 
     function updateUser(req, res) {
         var user = req.body;
-        var uid = req.params._id;
-        for(var u in users) {
-            if(users[u]._id == uid) {
-                users[u] = user;
-            }
-        }
-        res.send(200);
+        var uid = req.params.uid;
+        model
+            .userModel
+            .updateUser(uid, user)
+            .then(
+                function (status) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
-
     function createUser(req, res) {
         var user = req.body;
-        user._id = (new Date()).getTime();
-        users.push(user);
-        res.send(user);
+        model
+            .userModel
+            .createUser(user)
+            .then(
+                function(newUser) {
+                    res.send(newUser);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
     function findUserByCredentials(req, res) {
-        var username = req.params.username;
-        var password = req.params.password;
-        for(var u in users) {
-            if(users[u].username === username &&
-                users[u].password === password) {
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        var username = req.query.username;
+        var password = req.query.password;
+        model
+            .userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function (users) {
+                    if(users) {
+                        res.json(users[0]);
+                    } else {
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
     function findUserByUsername(req, res) {
         var username = req.query.username;
-        for(var u in users) {
-            if(users[u].username === username) {
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        model
+            .userModel
+            .findUserByUsername(username)
+            .then(
+                function(user){
+                    res.json(user);
+                },
+                function (error){
+                    res.status(404).send("Unable to find user with username: " + username);
+                }
+            );
+
+        /*for (var u in users) {
+         if (users[u].username === username) {
+         res.send(users[u]);
+         return;
+         }
+         }
+         res.send({});*/
     }
     function findUserById(req, res) {
-        var userId = parseInt(req.params.uid);
-        for(var u in users) {
-            if(users[u]._id === userId) {
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send('0');
+        var userId = req.params.uid;
+        model
+            .userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    if(user) {
+                        res.send(user);
+                    } else {
+                        res.send('0');
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            )
     }
 };

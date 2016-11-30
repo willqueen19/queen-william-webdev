@@ -9,7 +9,7 @@ module.exports = function () {
 
     var api = {
         "createWidget" : createWidget,
-        "findWidgetByPageId" : findWidgetByPageId,
+        "findWidgetByPage" : findWidgetByPage,
         "findWidgetById" : findWidgetById,
         "updateWidget" : updateWidget,
         "deleteWidget" : deleteWidget,
@@ -21,7 +21,7 @@ module.exports = function () {
     function setModel(_model) {
         model = _model;
     }
-    function findWidgetByPageId(pageId) {
+    function findWidgetByPage(pageId) {
         return WidgetModel.find({_page: pageId});
     }
     function findWidgetById(widgetId) {
